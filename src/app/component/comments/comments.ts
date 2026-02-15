@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-comments',
@@ -6,6 +7,11 @@ import { Component } from '@angular/core';
   templateUrl: './comments.html',
   styleUrl: './comments.css',
 })
-export class Comments {
+export class Comments implements OnInit {
+  constructor(private activedRouted: ActivatedRoute) { }
 
+  ngOnInit(): void {
+    const commentslist = this.activedRouted.snapshot.data['commentsList'];
+    console.log('commentslist >>>>', commentslist);
+  }
 }
